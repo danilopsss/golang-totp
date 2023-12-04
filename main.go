@@ -40,7 +40,7 @@ func (t *TOTP) GenerateOTP(epochTime int) string {
 	truncatedHmac := DynamicTruncation(hmac, epochTime)
 	otp := int(math.Mod(float64(truncatedHmac), math.Pow10(6)))
 	sizeDiff := 6 - len(fmt.Sprintf("%d", otp))
-	if sizeDiff > 1 {
+	if sizeDiff > 0 {
 		return strings.Repeat("0", sizeDiff) + fmt.Sprintf("%d", otp)
 	}
 	return fmt.Sprintf("%d", otp)
