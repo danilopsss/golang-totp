@@ -8,7 +8,7 @@ import (
 func TestTOTPGen(t *testing.T) {
 	mockedEpochTime := 1700681792
 	testKey := "ABCDEFGHIJKLMNOPPONMLKJIHGFEDCBA"
-	totpStruct := &TOTP{key: testKey}
+	totpStruct := &TOTP{Key: testKey}
 	expectTOTP := "496979"
 
 	t.Run("RFC 4226 - Step 1 - HMAC", func(t *testing.T) {

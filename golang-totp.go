@@ -11,7 +11,7 @@ import (
 )
 
 type TOTP struct {
-	key string
+	Key string
 }
 
 func GenerateCounter(epochTime int) []byte {
@@ -21,7 +21,7 @@ func GenerateCounter(epochTime int) []byte {
 }
 
 func GenerateHmac(t *TOTP, epochTime int) []byte {
-	key, _ := base32.StdEncoding.DecodeString(strings.ToUpper(t.key))
+	key, _ := base32.StdEncoding.DecodeString(strings.ToUpper(t.Key))
 	counter := GenerateCounter(epochTime)
 	h := hmac.New(sha1.New, key)
 	h.Write(counter)
